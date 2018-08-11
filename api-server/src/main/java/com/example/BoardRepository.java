@@ -7,12 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-public interface BoardRepository extends PagingAndSortingRepository <Board, String> {
+public interface BoardRepository extends PagingAndSortingRepository <Board, Integer> {
 	@Modifying
 	@Transactional
 	@Query(value = "UPDATE Board SET good=?2 WHERE id=?1")
 	void updateCount(int id,int good);
 	
 	List<Board> findByTitleContaining(String title);
-}
 
+}
