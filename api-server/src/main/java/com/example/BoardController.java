@@ -70,6 +70,7 @@ public class BoardController {
 				check = true;
 			}
 		}
+		check=false;
 		if (check) {
 			return HttpStatus.BAD_REQUEST;
 		} else {
