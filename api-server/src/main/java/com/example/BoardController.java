@@ -25,10 +25,22 @@ public class BoardController {
 		boardrepository.findAll(sort).forEach(e -> ar.add(e));
 		return ar;
 	}
-	
+
+	@RequestMapping(value = "/boards", method = RequestMethod.POST)
+	@ResponseBody
+	public Board insertBoards(@RequestBody Board board) {
+		return boardrepository.save(board);
+	}
+
+	@RequestMapping(value = "/boards/search", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Board> findBoard(@RequestParam String title) {
+		return boardrepository.findByTitleContaining(title);
+	}
+
 	@RequestMapping(value = "/{boardid}/good", method = RequestMethod.GET)
 	@ResponseBody
-	public void patch(@PathVariable int boardid,@RequestParam int body) {
+	public void patch(@PathVariable int boardid, @RequestParam int body) {
 		boardrepository.updateCount(boardid, body);
 	}
 }
