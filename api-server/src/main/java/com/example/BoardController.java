@@ -26,7 +26,7 @@ public class BoardController {
 		return ar;
 	}
 	
-	@RequestMapping(value = "/{boardid}/good", method = RequestMethod.PATCH)
+	@RequestMapping(value = "/{boardid}/good", method = RequestMethod.GET)
 	@ResponseBody
 	public void patch(@PathVariable int boardid,@RequestParam int body) {
 		boardrepository.updateCount(boardid, body);
